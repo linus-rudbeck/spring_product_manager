@@ -19,9 +19,21 @@ public class CategoriesService {
         return db.getOneById(categoryId);
     }
 
-    public static boolean EditCategory(int categoryId, Category category) {
+    public static boolean Edit(int categoryId, Category category) {
         var db = new CategoriesDatabase();
 
-        return db.updateCategory(categoryId, category);
+        return db.edit(categoryId, category);
+    }
+
+    public static boolean Create(Category category) {
+        var db = new CategoriesDatabase();
+
+        return db.create(category);
+    }
+
+    public static boolean Delete(int categoryId) {
+        var db = new CategoriesDatabase();
+
+        return db.delete(categoryId);
     }
 }

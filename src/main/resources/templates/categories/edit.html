@@ -11,11 +11,17 @@
 
 <main>
 
-    <div>
+    <div class="solo-item">
         <form th:action="@{/categories/{id}/edit(id=${category.getCategoryId()})}" method="post">
             <input type="text" name="categoryName" placeholder="Name" th:value="${category.getCategoryName()}"> <br>
             <input type="text" name="description" placeholder="Description" th:value="${category.getDescription()}"> <br>
-            <input type="submit" value="Save">
+            <input type="submit" value="Save" class="btn">
+        </form>
+
+        <hr>
+
+        <form th:action="@{/categories/{id}/delete(id=${category.getCategoryId()})}" method="post">
+            <input type="submit" value="Delete" class="btn delete-btn">
         </form>
     </div>
 

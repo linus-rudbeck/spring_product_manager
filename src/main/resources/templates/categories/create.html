@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div th:replace="fragments/header" />
+
+<main>
+
+    <div>
+        <form th:action="@{/categories/create}" method="post">
+            <input type="text" name="categoryName" placeholder="Name"> <br>
+            <input type="text" name="description" placeholder="Description"> <br>
+            <input type="submit" value="Save" class="btn">
+        </form>
+    </div>
+
+</main>
+</body>
+</html>

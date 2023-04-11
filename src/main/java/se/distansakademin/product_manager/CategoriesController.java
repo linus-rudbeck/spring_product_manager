@@ -21,6 +21,18 @@ public class CategoriesController {
         return "categories/home";
     }
 
+    @GetMapping("/categories/create")
+    public String showCreateCategoryForm(){
+        return "categories/create";
+    }
+
+    @PostMapping("/categories/create")
+    public String createCategory(@ModelAttribute("category")Category category){
+        CategoriesService.Create(category);
+
+        return "redirect:/categories";
+    }
+
     @GetMapping("/categories/{id}/edit")
     public String showEditCategoryForm(@PathVariable int id, Model model){
         var category = CategoriesService.GetOneById(id);
@@ -32,7 +44,14 @@ public class CategoriesController {
 
     @PostMapping("/categories/{id}/edit")
     public String editCategory(@PathVariable int id, @ModelAttribute("category")Category category){
-        CategoriesService.EditCategory(id, category);
+        CategoriesService.Edit(id, category);
+
+        return "redirect:/categories";
+    }
+
+    @PostMapping("/categories/{id}/delete")
+    public String deleteCategory(@PathVariable int id){
+        CategoriesService.Delete(id);
 
         return "redirect:/categories";
     }

@@ -68,7 +68,7 @@ public class CategoriesDatabase extends Database{
         return category;
     }
 
-    public boolean updateCategory(int categoryId, Category category) {
+    public boolean edit(int categoryId, Category category) {
         String query = "UPDATE categories SET category_name = ?, description = ? WHERE category_id = ?;";
 
         boolean success = false;
@@ -83,6 +83,51 @@ public class CategoriesDatabase extends Database{
             success = stmt.execute();
 
             stmt.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return success;
+    }
+
+    public boolean create(Category category) {
+        String query = "INSERT INTO categories (category_name, description) VALUES (?, ?);";
+
+        boolean success = false;
+
+        try{
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setString(1, category.getCategoryName());
+            stmt.setString(2, category.getDescription());
+
+            success = stmt.execute();
+
+            stmt.close();
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return success;
+    }
+
+    public boolean delete(int categoryId) {
+        String query = "DELETE FROM categories WHERE category_id = ?;";
+
+        boolean success = false;
+
+        try{
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setInt(1, categoryId);
+
+            success = stmt.execute();
+
+            stmt.close();
+
+
         }catch(SQLException e){
             e.printStackTrace();
         }
