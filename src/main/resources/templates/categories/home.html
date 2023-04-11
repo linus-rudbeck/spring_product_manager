@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div th:replace="fragments/header" />
+
+<main>
+
+    <div class="items-grid">
+
+        <article th:each="category : ${categories}">
+
+            <div>
+                <b th:text="${category.getCategoryName()}" /> <br>
+                <span th:text="${category.getDescription()}" />
+            </div>
+
+            <a th:href="@{/categories/{id}/edit(id=${category.getCategoryId()})}">Edit</a>
+
+        </article>
+
+    </div>
+
+</main>
+</body>
+</html>
