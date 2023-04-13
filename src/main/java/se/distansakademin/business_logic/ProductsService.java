@@ -35,4 +35,16 @@ public class ProductsService {
 
         db.delete(productId);
     }
+
+    public static int GetTotalSum() {
+        var db = new ProductsDatabase();
+
+        return db.getTotalSum();
+    }
+
+    public static float GetAveragePrice() {
+        var db = new ProductsDatabase();
+
+        return db.getAveragePrice();
+    }
 }

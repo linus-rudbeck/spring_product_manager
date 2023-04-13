@@ -138,4 +138,52 @@ public class ProductsDatabase  extends Database{
 
         return success;
     }
+
+    public int getTotalSum() {
+        int sum = 0;
+
+        try{
+            String query = "SELECT SUM(price) AS price_sum FROM products;";
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.execute();
+
+            ResultSet result = stmt.getResultSet();
+
+            if (result.next()){
+                sum = result.getInt("price_sum");
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return sum;
+    }
+
+    public float getAveragePrice() {
+        float average = 0;
+
+        try{
+            String query = "SELECT AVG(price) AS price_avg FROM products;";
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.execute();
+
+            ResultSet result = stmt.getResultSet();
+
+            if (result.next()){
+                average = result.getFloat("price_avg");
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return average;
+    }
 }

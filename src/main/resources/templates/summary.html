@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div th:replace="fragments/header"/>
+
+<main>
+    <h2>Summary</h2>
+    <div>
+
+        <article class="summary-data item">
+            <h3>Price sum</h3>
+            <p th:text="${totalSum}" />
+            <p><i>
+                Total sum of price of all products
+            </i></p>
+        </article>
+
+        <article class="summary-data item">
+            <h3>Price average</h3>
+            <p th:text="${averagePrice}" />
+            <p><i>
+                Total average price of all products
+            </i></p>
+        </article>
+
+    </div>
+</main>
+</body>
+</html>
