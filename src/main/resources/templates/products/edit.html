@@ -11,21 +11,30 @@
 
 <main>
 
-    <div>
-        <form th:action="@{/products/create}" method="post">
+    <div class="solo-item">
+        <form th:action="@{/products/{id}/edit(id=${product.getProductId()})}" method="post">
 
             <select name="categoryId" >
                 <option value="0" selected disabled>Select category</option>
+
                 <option
                         th:each="category : ${categories}"
                         th:value="${category.getCategoryId()}"
                         th:text="${category.getCategoryName()}"
                     />
+
             </select> <br>
 
-            <input type="text" name="productName" placeholder="Name"> <br>
-            <input type="number" name="price" placeholder="Price"> <br>
+            <input type="text" name="productName" placeholder="Name" th:value="${product.getProductName()}"> <br>
+            <input type="number" name="price" placeholder="Price" th:value="${product.getPrice()}"> <br>
             <input type="submit" value="Save" class="btn">
+        </form>
+
+
+        <hr>
+
+        <form th:action="@{/products/{id}/delete(id=${product.getProductId()})}" method="post">
+            <input type="submit" value="Delete" class="btn delete-btn">
         </form>
     </div>
 
