@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div th:replace="fragments/header"/>
+
+<main>
+
+    <div>
+        <form th:action="@{/products/create}" method="post">
+
+            <select name="categoryId" >
+                <option value="0" selected disabled>Select category</option>
+                <option
+                        th:each="category : ${categories}"
+                        th:value="${category.getCategoryId()}"
+                        th:text="${category.getCategoryName()}"
+                    />
+            </select> <br>
+
+            <input type="text" name="prodctName" placeholder="Name"> <br>
+            <input type="number" name="price" placeholder="Price"> <br>
+            <input type="submit" value="Save" class="btn">
+        </form>
+    </div>
+
+</main>
+</body>
+</html>

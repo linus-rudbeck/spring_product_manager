@@ -13,7 +13,7 @@
 
     <div class="items-grid">
 
-        <article th:each="category : ${categories}">
+        <article class="item" th:each="category : ${categories}">
 
             <div>
                 <b th:text="${category.getCategoryName()}" /> <br>

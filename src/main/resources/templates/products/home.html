@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div th:replace="fragments/header" />
+
+<main>
+
+  <div class="items-grid">
+
+    <article class="item" th:each="product : ${products}">
+
+      <div>
+        <b th:text="${product.getProductName()}" /> <br>
+        <span th:text="${product.getPrice()}" />
+      </div>
+
+      <a th:href="@{/products/{id}/edit(id=${product.getProductId()})}">Edit</a>
+
+    </article>
+
+  </div>
+
+</main>
+</body>
+</html>
